@@ -3,7 +3,7 @@ package com.ris.egafurov.bookkeeping;
 import java.util.Date;
 import java.util.UUID;
 
-public abstract class BaseModel {
+public abstract class ModelBase {
     private UUID mId;
     private Date mDate;
     private double mSum;
@@ -34,12 +34,12 @@ public abstract class BaseModel {
     }
 
 
-    protected BaseModel(boolean isIncome)
+    protected ModelBase(boolean isIncome)
     {
         mIsIncome = isIncome;
     }
 
-    protected BaseModel(UUID id, boolean isIncome)
+    protected ModelBase(UUID id, boolean isIncome)
     {
         this(isIncome);
         mId = id;

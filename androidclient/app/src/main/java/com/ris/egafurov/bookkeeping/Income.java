@@ -2,7 +2,7 @@ package com.ris.egafurov.bookkeeping;
 
 import java.util.UUID;
 
-public class Income extends BaseModel {
+public class Income extends ModelBase {
 
     public int getTypeIncome() {
         return mTypeIncome;

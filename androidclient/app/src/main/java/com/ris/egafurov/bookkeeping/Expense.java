@@ -2,7 +2,7 @@ package com.ris.egafurov.bookkeeping;
 
 import java.util.UUID;
 
-public class Expense extends BaseModel {
+public class Expense extends ModelBase {
 
     public int getTypeExpense() {
             return mTypeExpense;
