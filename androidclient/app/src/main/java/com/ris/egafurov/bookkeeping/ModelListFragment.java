@@ -8,8 +8,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -20,6 +24,12 @@ public class ModelListFragment extends Fragment {
 
     private RecyclerView mModelRecyclerView;
     private ModelAdapter mAdapterModelList;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
 
     @Nullable
     @Override
@@ -37,6 +47,38 @@ public class ModelListFragment extends Fragment {
         UpdateUI();
     }
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.fragment_model_list, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.new_expense:
+                Expense expense = new Expense();
+                ModelLab.get(getActivity()).AddExpense(expense);
+                Intent intentExpense = MainActivity.newIntent(getActivity(), expense.getId(), expense.isIncome());
+                startActivity(intentExpense);
+                Log.d("Menu", "Add Expense");
+                return true;
+            case R.id.new_income:
+                Income income = new Income();
+                ModelLab.get(getActivity()).AddIncome(income);
+                Intent intentIncome = MainActivity.newIntent(getActivity(), income.getId(), income.isIncome());
+                startActivity(intentIncome);
+                Log.d("Menu", "Add Income");
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+    }
+
+
+
+
     private void UpdateUI(){
         ModelLab modelLab = ModelLab.get(getActivity());
         List<ModelBase> list = modelLab.getModels();
@@ -44,6 +86,7 @@ public class ModelListFragment extends Fragment {
             mAdapterModelList = new ModelAdapter(list);
             mModelRecyclerView.setAdapter(mAdapterModelList);
         }else {
+            mAdapterModelList.setModels(list);
             mAdapterModelList.notifyDataSetChanged();
         }
     }
@@ -102,6 +145,10 @@ public class ModelListFragment extends Fragment {
         @Override
         public int getItemCount() {
             return mModels.size();
+        }
+
+        public void setModels(List<ModelBase> models) {
+            mModels = models;
         }
     }
 }

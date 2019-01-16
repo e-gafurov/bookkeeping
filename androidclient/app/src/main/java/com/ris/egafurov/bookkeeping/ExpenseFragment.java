@@ -40,8 +40,8 @@ public class ExpenseFragment extends Fragment {
      * @param id - Id models.
      * @return A new instance of fragment IncomeFragment.
      */
-    public static IncomeFragment newInstance(UUID id) {
-        IncomeFragment fragment = new IncomeFragment();
+    public static ExpenseFragment newInstance(UUID id) {
+        ExpenseFragment fragment = new ExpenseFragment();
         Bundle args = new Bundle();
         args.putSerializable(ARG_EXPENSE_ID, id);
         fragment.setArguments(args);

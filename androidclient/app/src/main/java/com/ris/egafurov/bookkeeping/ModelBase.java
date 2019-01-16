@@ -18,7 +18,7 @@ public abstract class ModelBase {
     }
 
     public Date getDate() {
-        return mDate;
+        return mDate == null ? new Date() : mDate;
     }
 
     public void setDate(Date date) {
@@ -38,6 +38,7 @@ public abstract class ModelBase {
 
     protected ModelBase(boolean isIncome)
     {
+        mId = UUID.randomUUID();
         mIsIncome = isIncome;
     }
 

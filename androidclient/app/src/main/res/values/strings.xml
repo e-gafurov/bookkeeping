@@ -15,4 +15,7 @@
     <string name="required_field">Поле обязательно для заполнения</string>
     <string name="error_sum_less_zero">Сумма не может быть меньше или равна нулю</string>
     <string name="date_picker_title">Дата:</string>
+    <string name="new_income">Добавить доход</string>
+    <string name="new_expense">Добавить расход</string>
+    <string name="del_item">Удалить</string>
 </resources>
