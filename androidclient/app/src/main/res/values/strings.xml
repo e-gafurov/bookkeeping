@@ -18,4 +18,5 @@
     <string name="new_income">Добавить доход</string>
     <string name="new_expense">Добавить расход</string>
     <string name="del_item">Удалить</string>
+    <string name="new_expense_by_qr">Добавить расход по QR коду</string>
 </resources>

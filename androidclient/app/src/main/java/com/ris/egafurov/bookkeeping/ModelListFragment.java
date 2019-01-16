@@ -71,6 +71,10 @@ public class ModelListFragment extends Fragment {
                 startActivity(intentIncome);
                 Log.d("Menu", "Add Income");
                 return true;
+            case  R.id.new_expense_qr:
+                ServiceOFD serviceOFD = new ServiceOFD(getActivity(),"9288000100035206",  "54802",  "1977932697");
+                serviceOFD.GetExpense();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

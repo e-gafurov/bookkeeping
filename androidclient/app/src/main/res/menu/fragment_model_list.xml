@@ -9,4 +9,8 @@
         android:icon="@android:drawable/btn_plus"
         android:title="@string/new_income"
         app:showAsAction="ifRoom|withText"/>
+    <item android:id="@+id/new_expense_qr"
+        android:icon="@android:drawable/ic_input_get"
+        android:title="@string/new_expense_by_qr"
+        app:showAsAction="ifRoom|withText"/>
 </menu>
