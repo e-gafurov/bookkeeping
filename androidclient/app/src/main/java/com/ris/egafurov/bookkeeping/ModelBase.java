@@ -29,6 +29,8 @@ public abstract class ModelBase {
         return mSum;
     }
 
+    public String getSumString() { return String.format("%f", mSum);}
+
     public void setSum(double sum) {
         mSum = sum;
     }

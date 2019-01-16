@@ -1,11 +1,34 @@
 package com.ris.egafurov.bookkeeping;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
+
+import java.util.UUID;
 
 public class MainActivity extends SingleFragmentActivity {
 
+    private static final String EXTRA_MODEL_ID = "com.ris.egafurov.bookkeeping.extra_model_id";
+    private static final String EXTRA_ISINCOME = "com.ris.egafurov.bookkeeping.extra_isincome";
+
+    public static Intent newIntent(Context packageContext, UUID modelId, boolean isIncome) {
+        Intent intent = new Intent(packageContext, MainActivity.class);
+        intent.putExtra(EXTRA_MODEL_ID, modelId);
+        intent.putExtra(EXTRA_ISINCOME, isIncome);
+        return intent;
+    }
+
+
     @Override
     protected Fragment createFragment() {
-        return new IncomeFragment();
+        UUID modelId = (UUID) getIntent()
+                .getSerializableExtra(EXTRA_MODEL_ID);
+        boolean isIncome = (boolean) getIntent()
+                .getSerializableExtra(EXTRA_ISINCOME);
+        if (isIncome) {
+            return IncomeFragment.newInstance(modelId);
+        }else{
+            return ExpenseFragment.newInstance(modelId);
+        }
     }
 }

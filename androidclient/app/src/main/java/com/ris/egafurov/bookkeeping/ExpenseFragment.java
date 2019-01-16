@@ -15,20 +15,21 @@ import android.widget.EditText;
 import java.util.Date;
 import java.util.UUID;
 
-public class IncomeFragment extends Fragment {
-    private static final String ARG_INCOME_ID = "com.ris.egafurov.bookkeeping.arg_income_id";
-    private static final String DIALOG_DATE = "com.ris.egafurov.bookkeeping.DialogDateIncome";
+public class ExpenseFragment extends Fragment {
+    private static final String ARG_EXPENSE_ID = "com.ris.egafurov.bookkeeping.arg_expense_id";
+    private static final String DIALOG_DATE = "com.ris.egafurov.bookkeeping.DialogDateExpense";
     private static final int REQUEST_DATE = 0;
 
 
     private UUID mId;
-    private Income mIncome;
+    private Expense mExpense;
     private EditText mSumField;
     private Button mDateField;
     private EditText mTypeField;
+    private EditText mShopField;
     private Button mSaveBtn;
 
-    public IncomeFragment() {
+    public ExpenseFragment() {
         // Required empty public constructor
     }
 
@@ -42,7 +43,7 @@ public class IncomeFragment extends Fragment {
     public static IncomeFragment newInstance(UUID id) {
         IncomeFragment fragment = new IncomeFragment();
         Bundle args = new Bundle();
-        args.putSerializable(ARG_INCOME_ID, id);
+        args.putSerializable(ARG_EXPENSE_ID, id);
         fragment.setArguments(args);
         return fragment;
     }
@@ -51,40 +52,43 @@ public class IncomeFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mId = (UUID)getArguments().getSerializable(ARG_INCOME_ID);
+            mId = (UUID)getArguments().getSerializable(ARG_EXPENSE_ID);
         }
-        mIncome = ModelLab.get(getActivity()).getIncome(mId);
+        mExpense = ModelLab.get(getActivity()).getExpense(mId);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_income, container, false);
-        mSumField = (EditText)v.findViewById(R.id.income_sum);
-        mSumField.setText(mIncome.getSumString());
-        mDateField = (Button) v.findViewById(R.id.income_date);
+        View v = inflater.inflate(R.layout.fragment_expense, container, false);
+        mSumField = (EditText)v.findViewById(R.id.expense_sum);
+        mSumField.setText(mExpense.getSumString());
+        mDateField = (Button) v.findViewById(R.id.expense_date);
         updateDate();
         mDateField.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentManager manager = getFragmentManager();
-                DatePickerFragment dialog = DatePickerFragment.newInstance(mIncome.getDate());
-                dialog.setTargetFragment(IncomeFragment.this, REQUEST_DATE);
+                DatePickerFragment dialog = DatePickerFragment.newInstance(mExpense.getDate());
+                dialog.setTargetFragment(ExpenseFragment.this, REQUEST_DATE);
                 dialog.show(manager, DIALOG_DATE);
             }
         });
-        mTypeField = (EditText)v.findViewById(R.id.income_type);
-        mTypeField.setText(mIncome.getTypeIncome());
-        mSaveBtn = (Button)v.findViewById(R.id.income_save);
+        mTypeField = (EditText)v.findViewById(R.id.expense_type);
+        mTypeField.setText(mExpense.getTypeExpense());
+        mShopField = (EditText)v.findViewById(R.id.expense_shop);
+        mShopField.setText(mExpense.getNameShop());
+        mSaveBtn = (Button)v.findViewById(R.id.expense_save);
         mSaveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (IsValidate()) {
                     //mIncome.setDate(new Date());
-                    mIncome.setSum(Double.parseDouble(mSumField.getText().toString()));
-                    mIncome.setTypeIncome(mTypeField.getText().toString());
-                    ModelLab.get(getActivity()).updateIncome(mIncome);
+                    mExpense.setSum(Double.parseDouble(mSumField.getText().toString()));
+                    mExpense.setTypeExpense(mTypeField.getText().toString());
+                    mExpense.setNameShop(mShopField.getText().toString());
+                    ModelLab.get(getActivity()).updateExpense(mExpense);
                     //getActivity().onBackPressed();
                 }
             }
@@ -116,6 +120,12 @@ public class IncomeFragment extends Fragment {
             mTypeField.setError(requiredMsg);
             result &= false;
         }
+
+        String shop = mShopField.getText().toString();
+        if (TextUtils.isEmpty(shop)){
+            mShopField.setError(requiredMsg);
+            result &= false;
+        }
         return result;
     }
 
@@ -126,13 +136,12 @@ public class IncomeFragment extends Fragment {
         }
         if (requestCode == REQUEST_DATE) {
             Date date = (Date) data.getSerializableExtra(DatePickerFragment.EXTRA_DATE);
-            mIncome.setDate(date);
+            mExpense.setDate(date);
             updateDate();
         }
-
     }
 
     private void updateDate() {
-        mDateField.setText(mIncome.getDate().toString());
+        mDateField.setText(mExpense.getDate().toString());
     }
 }

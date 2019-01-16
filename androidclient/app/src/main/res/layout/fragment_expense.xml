@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="16dp"
-    android:orientation="vertical">
-
-    <!-- TODO: Update blank fragment layout -->
+    android:padding="16dp">
     <Button
-        android:id="@+id/income_date"
+        android:id="@+id/expense_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/date"/>
@@ -15,29 +12,39 @@
         style="?android:listSeparatorTextViewStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/income_sum" />
+        android:text="@string/expense_sum" />
     <EditText
-        android:id="@+id/income_sum"
+        android:id="@+id/expense_sum"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="numberSigned|numberDecimal"
-        android:hint="@string/income_sum_hint"/>
+        android:hint="@string/expense_sum_hint"/>
     <TextView
         style="?android:listSeparatorTextViewStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/income_type" />
+        android:text="@string/expense_type" />
     <EditText
-        android:id="@+id/income_type"
+        android:id="@+id/expense_type"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
-        android:hint="@string/income_type_hint"/>
+        android:hint="@string/expense_type_hint"/>
+    <TextView
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/expense_shop" />
+    <EditText
+        android:id="@+id/expense_shop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:hint="@string/expense_shop_hint"/>
     <Button
-        android:id="@+id/income_save"
+        android:id="@+id/expense_save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/save"/>
-
 
 </LinearLayout>

@@ -1,5 +1,6 @@
 package com.ris.egafurov.bookkeeping;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -30,14 +31,25 @@ public class ModelListFragment extends Fragment {
         return v;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        UpdateUI();
+    }
+
     private void UpdateUI(){
         ModelLab modelLab = ModelLab.get(getActivity());
         List<ModelBase> list = modelLab.getModels();
-        mAdapterModelList = new ModelAdapter(list);
-        mModelRecyclerView.setAdapter(mAdapterModelList);
+        if (mAdapterModelList == null) {
+            mAdapterModelList = new ModelAdapter(list);
+            mModelRecyclerView.setAdapter(mAdapterModelList);
+        }else {
+            mAdapterModelList.notifyDataSetChanged();
+        }
     }
 
-    private class ModelHolder extends RecyclerView.ViewHolder {
+    private class ModelHolder extends RecyclerView.ViewHolder
+            implements View.OnClickListener  {
 
         private TextView mDateField;
         private TextView mSumField;
@@ -45,6 +57,7 @@ public class ModelListFragment extends Fragment {
 
         public ModelHolder(LayoutInflater layoutInflater, ViewGroup parent) {
             super(layoutInflater.inflate(R.layout.list_item_model, parent, false));
+            itemView.setOnClickListener(this);
 
             mDateField = (TextView)itemView.findViewById(R.id.model_date);
             mSumField = (TextView)itemView.findViewById(R.id.model_sum);
@@ -53,8 +66,15 @@ public class ModelListFragment extends Fragment {
         public void bind(ModelBase modelBase){
             mModelBase = modelBase;
             mDateField.setText(mModelBase.getDate().toString());
-            mSumField.setText(String.format("%f",mModelBase.getSum()));
+            mSumField.setText(mModelBase.getSumString());
             mSumField.setTextColor(ContextCompat.getColor(getActivity(), mModelBase.isIncome() ? R.color.colorGreenText : R.color.colorRedText));
+        }
+
+        @Override
+        public void onClick(View v) {
+            Intent intent = MainActivity.newIntent(getActivity(), mModelBase.getId(), mModelBase.isIncome());
+            startActivity(intent);
+
         }
     }
 
