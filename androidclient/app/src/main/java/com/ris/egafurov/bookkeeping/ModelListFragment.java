@@ -36,6 +36,7 @@ public class ModelListFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_model_list, container, false);
         mModelRecyclerView = (RecyclerView) v.findViewById(R.id.model_recycle_view);
+        mModelRecyclerView.setHasFixedSize(true);
         mModelRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         UpdateUI();
         return v;
@@ -76,16 +77,13 @@ public class ModelListFragment extends Fragment {
 
     }
 
-
-
-
     private void UpdateUI(){
         ModelLab modelLab = ModelLab.get(getActivity());
         List<ModelBase> list = modelLab.getModels();
         if (mAdapterModelList == null) {
             mAdapterModelList = new ModelAdapter(list);
             mModelRecyclerView.setAdapter(mAdapterModelList);
-        }else {
+       }else {
             mAdapterModelList.setModels(list);
             mAdapterModelList.notifyDataSetChanged();
         }

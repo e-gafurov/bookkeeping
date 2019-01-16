@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.text.TextUtils;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -81,11 +82,10 @@ public class IncomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (IsValidate()) {
-                    //mIncome.setDate(new Date());
                     mIncome.setSum(Double.parseDouble(mSumField.getText().toString()));
                     mIncome.setTypeIncome(mTypeField.getText().toString());
                     ModelLab.get(getActivity()).updateIncome(mIncome);
-                    //getActivity().onBackPressed();
+                    getActivity().onBackPressed();
                 }
             }
         });
@@ -96,10 +96,10 @@ public class IncomeFragment extends Fragment {
         boolean result = true;
         String date = mDateField.getText().toString();
         String requiredMsg = getResources().getString(R.string.required_field);
-        /*if (TextUtils.isEmpty(date)){
-            mIncomeDateField.setError(requiredMsg);
+        if (TextUtils.isEmpty(date)){
+            mDateField.setError(requiredMsg);
             result &= false;
-        }*/
+        }
 
         String sum = mSumField.getText().toString();
 

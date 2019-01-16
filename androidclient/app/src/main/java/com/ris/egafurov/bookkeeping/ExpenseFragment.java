@@ -84,12 +84,11 @@ public class ExpenseFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (IsValidate()) {
-                    //mIncome.setDate(new Date());
                     mExpense.setSum(Double.parseDouble(mSumField.getText().toString()));
                     mExpense.setTypeExpense(mTypeField.getText().toString());
                     mExpense.setNameShop(mShopField.getText().toString());
                     ModelLab.get(getActivity()).updateExpense(mExpense);
-                    //getActivity().onBackPressed();
+                    getActivity().onBackPressed();
                 }
             }
         });

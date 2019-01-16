@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -85,7 +86,7 @@ public class ModelLab {
             cursorExpense.close();
         }
 
-        models.sort(new ComparatorModeBase());
+        Collections.sort(models, new ComparatorModeBase());
 
         return models;
     }
@@ -135,9 +136,10 @@ public class ModelLab {
     public void updateExpense(Expense expense) {
         String uuidString = expense.getId().toString();
         ContentValues values = getContentValuesByExpense(expense);
-        mDatabase.update(ModelDbSchema.ExpenseTable.NAME, values,
+        int result = mDatabase.update(ModelDbSchema.ExpenseTable.NAME, values,
                 ModelDbSchema.ExpenseTable.Cols.UUID + " = ?",
                 new String[] { uuidString });
+        Log.d("UPDATEExpense", String.format("Result: %d", result));
     }
 
     public void deleteIncome(Income income){
