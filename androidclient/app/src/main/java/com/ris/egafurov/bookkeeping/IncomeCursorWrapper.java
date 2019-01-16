@@ -15,7 +15,7 @@ public class IncomeCursorWrapper extends CursorWrapper {
         String uuidString = getString(getColumnIndex(ModelDbSchema.IncomeTable.Cols.UUID));
         long date = getLong(getColumnIndex(ModelDbSchema.IncomeTable.Cols.EVENTDATE));
         double sum = getDouble(getColumnIndex(ModelDbSchema.IncomeTable.Cols.SUM));
-        int typeIncome = getInt(getColumnIndex(ModelDbSchema.IncomeTable.Cols.TYPEINCOME));
+        String typeIncome = getString(getColumnIndex(ModelDbSchema.IncomeTable.Cols.TYPEINCOME));
         Income income = new Income(UUID.fromString(uuidString));
         income.setDate(new Date(date));
         income.setSum(sum);

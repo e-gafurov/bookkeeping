@@ -4,15 +4,15 @@ import java.util.UUID;
 
 public class Income extends ModelBase {
 
-    public int getTypeIncome() {
+    public String getTypeIncome() {
         return mTypeIncome;
     }
 
-    public void setTypeIncome(int typeIncome) {
+    public void setTypeIncome(String typeIncome) {
         mTypeIncome = typeIncome;
     }
 
-    private int mTypeIncome;
+    private String mTypeIncome;
 
     public Income() {
         super(true);

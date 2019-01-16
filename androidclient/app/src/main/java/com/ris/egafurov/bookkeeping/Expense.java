@@ -4,11 +4,11 @@ import java.util.UUID;
 
 public class Expense extends ModelBase {
 
-    public int getTypeExpense() {
+    public String getTypeExpense() {
             return mTypeExpense;
     }
 
-    public void setTypeExpense(int typeExpense) {
+    public void setTypeExpense(String typeExpense) {
         mTypeExpense = typeExpense;
     }
 
@@ -20,7 +20,7 @@ public class Expense extends ModelBase {
         mNameShop = nameShop;
     }
 
-    private int mTypeExpense;
+    private String mTypeExpense;
     private String mNameShop;
 
     public Expense() {

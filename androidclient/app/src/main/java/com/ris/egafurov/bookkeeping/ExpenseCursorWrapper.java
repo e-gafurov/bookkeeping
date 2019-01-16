@@ -16,7 +16,7 @@ public class ExpenseCursorWrapper extends CursorWrapper {
         String uuidString = getString(getColumnIndex(ModelDbSchema.ExpenseTable.Cols.UUID));
         long date = getLong(getColumnIndex(ModelDbSchema.ExpenseTable.Cols.EVENTDATE));
         double sum = getDouble(getColumnIndex(ModelDbSchema.ExpenseTable.Cols.SUM));
-        int typeExpense = getInt(getColumnIndex(ModelDbSchema.ExpenseTable.Cols.TYPEEXPENSE));
+        String typeExpense = getString(getColumnIndex(ModelDbSchema.ExpenseTable.Cols.TYPEEXPENSE));
         String nameShop = getString(getColumnIndex(ModelDbSchema.ExpenseTable.Cols.NAMESHOP));
         Expense expense = new Expense(UUID.fromString(uuidString));
         expense.setDate(new Date(date));

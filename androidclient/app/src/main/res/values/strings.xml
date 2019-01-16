@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">BookKeeping</string>
+    <string name="date">Дата</string>
+    <string name="income_sum">Сумма дохода</string>
+    <string name="income_sum_hint">Введите сумму дохода</string>
+    <string name="income_type">Тип дохода</string>
+    <string name="income_type_hint">Введите тип дохода</string>
+    <string name="expense_sum">Сумма расхода</string>
+    <string name="expense_sum_hint">Введите сумму расхода</string>
+    <string name="expense_type">Тип расхода</string>
+    <string name="expense_type_hint">Введите тип расхода</string>
+    <string name="expense_shop">Наименование организации</string>
+    <string name="save">Сохранить</string>
+    <string name="required_field">Поле обязательно для заполнения</string>
+    <string name="error_sum_less_zero">Сумма не может быть меньше или равна нулю</string>
 </resources>
