@@ -23,6 +23,7 @@ import java.util.List;
 public class ModelListFragment extends Fragment {
 
     private RecyclerView mModelRecyclerView;
+    private TextView mCurrentBalanceTextView;
     private ModelAdapter mAdapterModelList;
 
     @Override
@@ -38,6 +39,7 @@ public class ModelListFragment extends Fragment {
         mModelRecyclerView = (RecyclerView) v.findViewById(R.id.model_recycle_view);
         mModelRecyclerView.setHasFixedSize(true);
         mModelRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mCurrentBalanceTextView = (TextView) v.findViewById(R.id.model_current_balance);
         UpdateUI();
         return v;
     }
@@ -81,9 +83,18 @@ public class ModelListFragment extends Fragment {
 
     }
 
+    private void SetCurrentBalance(double balance)
+    {
+        mCurrentBalanceTextView.setText(String.format("%.2f", balance));
+        mCurrentBalanceTextView.setTextColor(ContextCompat.getColor(getActivity(), balance > 0 ? R.color.colorGreenText : R.color.colorRedText));
+    }
+
     private void UpdateUI(){
         ModelLab modelLab = ModelLab.get(getActivity());
         List<ModelBase> list = modelLab.getModels();
+        double currentBalance = ModelLab.CalcBalance(list);
+        SetCurrentBalance(currentBalance);
+
         if (mAdapterModelList == null) {
             mAdapterModelList = new ModelAdapter(list);
             mModelRecyclerView.setAdapter(mAdapterModelList);

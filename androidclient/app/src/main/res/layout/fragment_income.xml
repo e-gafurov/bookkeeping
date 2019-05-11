@@ -9,12 +9,14 @@
         android:id="@+id/income_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/date"/>
+        android:hint="@string/date"
+        android:layout_marginTop="20dp"/>
     <TextView
         style="?android:listSeparatorTextViewStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/income_sum" />
+        android:text="@string/income_sum"
+        android:layout_marginTop="20dp"/>
     <EditText
         android:id="@+id/income_sum"
         android:layout_width="match_parent"
@@ -25,7 +27,8 @@
         style="?android:listSeparatorTextViewStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/income_type" />
+        android:text="@string/income_type"
+        android:layout_marginTop="20dp"/>
     <EditText
         android:id="@+id/income_type"
         android:layout_width="match_parent"
@@ -36,7 +39,8 @@
         android:id="@+id/income_save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/save"/>
+        android:text="@string/save"
+        android:layout_marginTop="20dp"/>
 
 
 </LinearLayout>

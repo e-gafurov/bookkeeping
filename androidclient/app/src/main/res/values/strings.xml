@@ -19,4 +19,5 @@
     <string name="new_expense">Добавить расход</string>
     <string name="del_item">Удалить</string>
     <string name="new_expense_by_qr">Добавить расход по QR коду</string>
+    <string name="current_balance">Текущий баланс:</string>
 </resources>

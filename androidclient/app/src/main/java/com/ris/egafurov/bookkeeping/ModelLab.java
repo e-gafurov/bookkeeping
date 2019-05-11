@@ -180,4 +180,22 @@ public class ModelLab {
         return new ExpenseCursorWrapper(cursor);
     }
 
+    public static double CalcBalance(List<ModelBase> source)
+    {
+        double result = 0.0d;
+        for (ModelBase item: source
+             ) {
+            if (item.isIncome())
+            {
+                result += item.getSum();
+            }
+            else
+            {
+                result -= item.getSum();
+            }
+        }
+
+        return result;
+    }
+
 }
