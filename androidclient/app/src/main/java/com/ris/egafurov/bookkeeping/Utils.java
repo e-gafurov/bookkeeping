@@ -1,6 +1,8 @@
 package com.ris.egafurov.bookkeeping;
 
+import java.text.DateFormat;
 import java.text.NumberFormat;
+import java.util.Date;
 
 public final class Utils {
     public static double parseDouble(String source)
@@ -14,5 +16,11 @@ public final class Utils {
             return 0.0d;
         }
 
+    }
+
+    public static String dateToString(Date source)
+    {
+        DateFormat format = DateFormat.getDateInstance(DateFormat.SHORT, CurrentLocale.GetCurentLocale());
+        return format.format(source);
     }
 }

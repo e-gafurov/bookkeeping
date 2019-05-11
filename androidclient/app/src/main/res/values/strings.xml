@@ -14,11 +14,12 @@
     <string name="save">Сохранить</string>
     <string name="required_field">Поле обязательно для заполнения</string>
     <string name="error_sum_less_zero">Сумма не может быть меньше или равна нулю</string>
-    <string name="date_picker_title">Дата:</string>
+    <string name="date_picker_title">Дата: </string>
     <string name="new_income">Добавить доход</string>
     <string name="new_expense">Добавить расход</string>
     <string name="del_item">Удалить</string>
     <string name="new_expense_by_qr">Добавить расход по QR коду</string>
     <string name="current_balance">Текущий баланс:</string>
     <string name="zero_balance">0.00</string>
+    <string name="sum_name">Сумма: </string>
 </resources>

@@ -141,6 +141,6 @@ public class ExpenseFragment extends Fragment {
     }
 
     private void updateDate() {
-        mDateField.setText(mExpense.getDate().toString());
+        mDateField.setText(mExpense.getDateString());
     }
 }

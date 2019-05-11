@@ -133,6 +133,6 @@ public class IncomeFragment extends Fragment {
     }
 
     private void updateDate() {
-        mDateField.setText(mIncome.getDate().toString());
+        mDateField.setText(mIncome.getDateString());
     }
 }

@@ -1,5 +1,6 @@
 package com.ris.egafurov.bookkeeping;
 
+import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.UUID;
@@ -21,6 +22,8 @@ public abstract class ModelBase {
     public Date getDate() {
         return mDate == null ? new Date() : mDate;
     }
+
+    public String getDateString() {return Utils.dateToString(getDate());}
 
     public void setDate(Date date) {
         mDate = date;

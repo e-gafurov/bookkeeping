@@ -122,7 +122,7 @@ public class ModelListFragment extends Fragment {
 
         public void bind(ModelBase modelBase){
             mModelBase = modelBase;
-            mDateField.setText(mModelBase.getDate().toString());
+            mDateField.setText(mModelBase.getDateString());
             mSumField.setText(mModelBase.getSumString());
             mSumField.setTextColor(ContextCompat.getColor(getActivity(), mModelBase.isIncome() ? R.color.colorGreenText : R.color.colorRedText));
         }

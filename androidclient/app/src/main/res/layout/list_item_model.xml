@@ -3,15 +3,37 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="8dp">
-    <TextView
-        android:id="@+id/model_date"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Date"/>
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/date_picker_title"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/model_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Date"
+            android:paddingHorizontal="5dp"/>
+    </LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sum_name"
+        android:textStyle="bold"/>
     <TextView
         android:id="@+id/model_sum"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sum"/>
+        android:text="Sum"
+        android:paddingHorizontal="5dp"/>
+</LinearLayout>
+
 
 </LinearLayout>
