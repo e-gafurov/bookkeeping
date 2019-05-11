@@ -84,7 +84,7 @@ public class ExpenseFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (IsValidate()) {
-                    mExpense.setSum(Double.parseDouble(mSumField.getText().toString()));
+                    mExpense.setSum(Utils.parseDouble(mSumField.getText().toString()));
                     mExpense.setTypeExpense(mTypeField.getText().toString());
                     mExpense.setNameShop(mShopField.getText().toString());
                     ModelLab.get(getActivity()).updateExpense(mExpense);
@@ -109,7 +109,7 @@ public class ExpenseFragment extends Fragment {
         if (TextUtils.isEmpty(sum)){
             mSumField.setError(requiredMsg);
             result &= false;
-        }else if (Double.parseDouble(sum) <= 0) {
+        }else if (Utils.parseDouble(sum) <= 0) {
             mSumField.setError(getResources().getString(R.string.error_sum_less_zero));
             result &= false;
         }

@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.List;
+import java.util.Locale;
 
 public class ModelListFragment extends Fragment {
 
@@ -85,7 +86,7 @@ public class ModelListFragment extends Fragment {
 
     private void SetCurrentBalance(double balance)
     {
-        mCurrentBalanceTextView.setText(String.format("%.2f", balance));
+        mCurrentBalanceTextView.setText(String.format(CurrentLocale.GetCurentLocale(),"%,.2f", balance));
         mCurrentBalanceTextView.setTextColor(ContextCompat.getColor(getActivity(), balance > 0 ? R.color.colorGreenText : R.color.colorRedText));
     }
 

@@ -82,7 +82,7 @@ public class IncomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (IsValidate()) {
-                    mIncome.setSum(Double.parseDouble(mSumField.getText().toString()));
+                    mIncome.setSum(Utils.parseDouble(mSumField.getText().toString()));
                     mIncome.setTypeIncome(mTypeField.getText().toString());
                     ModelLab.get(getActivity()).updateIncome(mIncome);
                     getActivity().onBackPressed();
@@ -106,7 +106,7 @@ public class IncomeFragment extends Fragment {
         if (TextUtils.isEmpty(sum)){
             mSumField.setError(requiredMsg);
             result &= false;
-        }else if (Double.parseDouble(sum) <= 0) {
+        }else if (Utils.parseDouble(sum) <= 0) {
             mSumField.setError(getResources().getString(R.string.error_sum_less_zero));
             result &= false;
         }

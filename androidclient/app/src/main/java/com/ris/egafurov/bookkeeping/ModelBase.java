@@ -1,6 +1,7 @@
 package com.ris.egafurov.bookkeeping;
 
 import java.util.Date;
+import java.util.Locale;
 import java.util.UUID;
 
 public abstract class ModelBase {
@@ -29,7 +30,7 @@ public abstract class ModelBase {
         return mSum;
     }
 
-    public String getSumString() { return String.format("%.2f", mSum);}
+    public String getSumString() { return String.format(CurrentLocale.GetCurentLocale(),"%,.2f", mSum);}
 
     public void setSum(double sum) {
         mSum = sum;
