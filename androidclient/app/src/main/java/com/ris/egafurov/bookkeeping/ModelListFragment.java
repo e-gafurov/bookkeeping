@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import java.util.List;
 import java.util.Locale;
+import java.util.UUID;
 
 public class ModelListFragment extends Fragment {
 
@@ -63,20 +64,24 @@ public class ModelListFragment extends Fragment {
             case R.id.new_expense:
                 Expense expense = new Expense();
                 ModelLab.get(getActivity()).AddExpense(expense);
-                Intent intentExpense = MainActivity.newIntent(getActivity(), expense.getId(), expense.isIncome());
+                Intent intentExpense = MainActivity.newIntent(getActivity(), FragmentName.Expense, expense.getId(), expense.isIncome());
                 startActivity(intentExpense);
                 Log.d("Menu", "Add Expense");
                 return true;
             case R.id.new_income:
                 Income income = new Income();
                 ModelLab.get(getActivity()).AddIncome(income);
-                Intent intentIncome = MainActivity.newIntent(getActivity(), income.getId(), income.isIncome());
+                Intent intentIncome = MainActivity.newIntent(getActivity(), FragmentName.Income, income.getId(), income.isIncome());
                 startActivity(intentIncome);
                 Log.d("Menu", "Add Income");
                 return true;
             case  R.id.new_expense_qr:
                 ServiceOFD serviceOFD = new ServiceOFD(getActivity(),"9288000100035206",  "54802",  "1977932697");
                 serviceOFD.GetExpense();
+                return true;
+            case R.id.report:
+                Intent intentReport = MainActivity.newIntent(getActivity(), FragmentName.Report);
+                startActivity(intentReport);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -129,9 +134,10 @@ public class ModelListFragment extends Fragment {
 
         @Override
         public void onClick(View v) {
-            Intent intent = MainActivity.newIntent(getActivity(), mModelBase.getId(), mModelBase.isIncome());
+            boolean isIncome = mModelBase.isIncome();
+            String fragmentId = isIncome ? FragmentName.Income : FragmentName.Expense;
+            Intent intent = MainActivity.newIntent(getActivity(), fragmentId,  mModelBase.getId(), isIncome);
             startActivity(intent);
-
         }
     }
 

@@ -13,4 +13,8 @@
         android:icon="@android:drawable/ic_input_get"
         android:title="@string/new_expense_by_qr"
         app:showAsAction="ifRoom|withText"/>
+    <item android:id="@+id/report"
+        android:icon="@android:drawable/button_onoff_indicator_on"
+        android:title="Отчет"
+        app:showAsAction="ifRoom|withText"/>
 </menu>
